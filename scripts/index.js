@@ -5,46 +5,46 @@ const yourScoreEl = document.getElementById("your-score");
 let yourTotalScore = 0;
 let computerTotalScore = 0;
 
-document.getElementById("new-deck-btn").addEventListener("click", function () {
-	fetch("https://apis.scrimba.com/deckofcards/api/deck/new/shuffle/")
-		.then((res) => res.json())
-		.then((data) => {
-			deckId = data.deck_id;
-			cardsLeft = data.remaining;
-			document.getElementById("cards-remaining").textContent =
-				cardsLeft + " cards remaining";
-			document.getElementById("draw-cards-btn").disabled = false;
-		});
-});
+document
+	.getElementById("new-deck-btn")
+	.addEventListener("click", async function () {
+		const response = await fetch(
+			"https://apis.scrimba.com/deckofcards/api/deck/new/shuffle/"
+		);
+		const data = await response.json();
+		deckId = data.deck_id;
+		cardsLeft = data.remaining;
+		document.getElementById("cards-remaining").textContent =
+			cardsLeft + " cards remaining";
+		document.getElementById("draw-cards-btn").disabled = false;
+	});
 
 document
 	.getElementById("draw-cards-btn")
-	.addEventListener("click", function () {
-		fetch(
+	.addEventListener("click", async function () {
+		const response = await fetch(
 			`https://apis.scrimba.com/deckofcards/api/deck/${deckId}/draw/?count=2`
-		)
-			.then((res) => res.json())
-			.then((data) => {
-				for (let i = 0; i < data.cards.length; i++) {
-					// added 1 to skip the first child since it is text
-					document.getElementById("cards").children[i + 1].innerHTML = ` 
+		);
+		const data = await response.json();
+		for (let i = 0; i < data.cards.length; i++) {
+			// added 1 to skip the first child since it is text
+			document.getElementById("cards").children[i + 1].innerHTML = ` 
                             <img src="${data.cards[i].image}"/>
                         `;
-				}
-				const winnerText = cardWinner(data.cards[0], data.cards[1]);
-				document.getElementById("header").innerText = winnerText;
-				computerScoreEl.textContent = "Computer: " + computerTotalScore;
-				yourScoreEl.textContent = "You: " + yourTotalScore;
+		}
+		const winnerText = cardWinner(data.cards[0], data.cards[1]);
+		document.getElementById("header").innerText = winnerText;
+		computerScoreEl.textContent = "Computer: " + computerTotalScore;
+		yourScoreEl.textContent = "You: " + yourTotalScore;
 
-				cardsLeft = data.remaining;
-				document.getElementById("cards-remaining").textContent =
-					cardsLeft + " cards remaining";
+		cardsLeft = data.remaining;
+		document.getElementById("cards-remaining").textContent =
+			cardsLeft + " cards remaining";
 
-				if (cardsLeft <= 0) {
-					document.getElementById("draw-cards-btn").disabled = true;
-					endGame();
-				}
-			});
+		if (cardsLeft <= 0) {
+			document.getElementById("draw-cards-btn").disabled = true;
+			endGame();
+		}
 	});
 
 function cardWinner(card1, card2) {
