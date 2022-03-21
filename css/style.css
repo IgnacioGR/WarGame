@@ -1,0 +1,115 @@
+* {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+	scroll-behavior: smooth;
+	font-family: "Exo 2", sans-serif;
+}
+
+html,
+body {
+	background-color: green;
+	min-width: 250px;
+	text-align: center;
+	height: 100vh;
+	color: white;
+}
+
+html {
+	font-size: 24px;
+}
+
+body {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+h2 {
+	font-size: 1.1rem;
+	margin-top: 10px;
+}
+
+button {
+	border: 0;
+	cursor: pointer;
+	background-color: yellow;
+	font-weight: bold;
+	font-size: 1rem;
+	padding: 10px;
+}
+
+button:hover {
+	box-shadow: 0 0 10px black;
+}
+
+button:disabled {
+	cursor: not-allowed;
+}
+
+img {
+	height: 100%;
+	width: 100%;
+}
+
+p {
+	margin: 5px;
+}
+
+.card-slot {
+	border: 1px solid black;
+	border-radius: 5px;
+	height: 180px;
+	width: calc(180px * 5 / 7);
+}
+
+.card-slot:nth-of-type(1) {
+	margin-bottom: 50px;
+}
+
+#deck-container {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	font-size: 0.8rem;
+}
+
+#new-deck-btn {
+	border-radius: 0 0 5px 0;
+	align-self: flex-start;
+	padding: 5px 15px;
+}
+
+#cards {
+	height: 80%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+@media only screen and (min-width: 600px) {
+	html {
+		font-size: 30px;
+	}
+}
+
+@media only screen and (min-width: 2300px) {
+	html {
+		font-size: 40px;
+	}
+
+	#deck-container {
+		justify-content: center;
+	}
+
+	#new-deck-btn {
+		border-radius: 0 0 5px 5px;
+	}
+
+	#draw-cards-btn {
+		width: 1000px;
+		align-self: center;
+		border-radius: 5px 5px 0 0;
+	}
+}

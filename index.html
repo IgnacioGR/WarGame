@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>War Game</title>
+		<link rel="preconnect" href="https://fonts.gstatic.com" />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="css/style.css" />
+	</head>
+	<body>
+		<div id="deck-container">
+			<button id="new-deck-btn">New Deck</button>
+			<p id="cards-remaining"></p>
+		</div>
+		<h2 id="header">Press New Deck to Start the War!</h2>
+		<div id="cards">
+			<p id="computer-score">Computer:</p>
+			<div class="card-slot"></div>
+			<div class="card-slot"></div>
+			<p id="your-score">You:</p>
+		</div>
+		<button disabled id="draw-cards-btn">Draw Cards</button>
+		<script src="scripts/index.js"></script>
+	</body>
+</html>
